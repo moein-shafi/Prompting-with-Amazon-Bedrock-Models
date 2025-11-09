@@ -1,4 +1,4 @@
-# Introduction: Why Structuring Your Prompts Matters
+# 1- Introduction: Why Structuring Your Prompts Matters
 Welcome to the first lesson of the course! This lesson will teach you why structuring your prompts is essential when working with large language models.
 
 When you write a prompt, you are giving instructions to the LLM. If your instructions are clear and well-organized, the model is much more likely to provide you with a helpful and accurate response. On the other hand, if your prompt is messy or hard to follow, the model might misunderstand what you want.
@@ -124,3 +124,82 @@ Markdown is especially useful because:
 - It makes your prompts visually clear and organized for both you and the LLM.
 
 However, remember that Markdown is just one option. The most important thing is to structure your prompt in a way that is clear and easy to follow.
+
+
+# 2- Introduction: Why Model-Specific Formatting?
+As you learned in the previous lesson, clear formatting helps language models understand your requests better. Now, let's take this a step further. Some language models, such as Claude, GPT, or Gemini, work best when you use a specific format in your prompt. This is called `model-specific formatting`.
+
+**Why does this matter?** Each model is trained differently and may expect information in a specific structure. If you use the right format, you can get more accurate and helpful responses. In this lesson, I will show you how to adapt your prompts to fit the needs of different models, focusing on `XML` formatting for `Claude` as a key example.
+
+## What Is Model-Specific Formatting?
+
+Model-specific formatting means shaping your prompt to match what a particular language model expects. For example, some models work well with plain text, while others prefer structured formats like XML or JSON.
+
+If you use `Claude`, Anthropic recommends using `XML` tags to structure your prompt. Using the right format is like speaking the model's "native language." It makes your instructions clearer and helps the model give you better answers.
+
+## Basics of XML
+`XML (eXtensible Markup Language)` is a way to organize information using custom tags. It looks similar to HTML, but you can create your own tag names to describe your data. Each piece of information is wrapped in a pair of tags: an opening tag (like `<data>`) and a closing tag (like `</data>`). This helps both humans and language models understand the structure and meaning of the information.
+
+For example:
+
+```XML
+<question>
+What is your favorite color?
+</question>
+```
+You can use any tag names that make sense for your task, such as `<instructions>`, `<data>`, or `<summary>`.
+
+### Example: XML Prompting for Claude
+
+Consider the following case: you have some data and want to summarize key trends and insights from it. Let's build an XML-formatted prompt for Claude to handle this task.
+
+#### Step 1: Start with Your Data
+
+First, you need to provide the data you want the model to analyze. For example, you might have a large CSV file with survey responses. You can wrap this data in a `<data>` tag to make it clear where the data starts and ends.
+
+```XML
+<data>
+... (your survey data here) ...
+</data>
+```
+Using the `<data>` tag, you tell Claude, "Everything inside here is the data you should look at."
+
+#### Step 2: Add Your Instructions
+
+Next, tell the model what you want it to do with the data. You can use an `<instructions>` tag for this.
+
+```XML
+<instructions>
+Your goal is to summarize this data's key trends and insights, highlighting any notable patterns or outliers.
+</instructions>
+```
+
+By structuring your prompt this way, you help Claude understand precisely what information to use and what task to perform. The XML tags act as clear boundaries, reducing confusion and improving the quality of the response.
+
+**Key Point:**
+<u>Always check the documentation for the model you are using</u>. Some models, like Claude, perform better with structured formats like XML. Others, like GPT, might be more flexible with markdown.
+
+### Example: Nested XML Tags
+
+XML tags can also be nested, meaning you can put tags inside other tags to show relationships between pieces of information. <u>This is useful when you have complex data or want to clearly organize your instructions</u>.
+
+For example:
+
+```XML
+<task>
+  <instructions>
+    Summarize the survey results.
+  </instructions>
+  <data>
+    <response>
+      <name>Alice</name>
+      <answer>Blue</answer>
+    </response>
+    <response>
+      <name>Bob</name>
+      <answer>Green</answer>
+    </response>
+  </data>
+</task>
+```
+In this example, the `<task>` tag contains both `<instructions>` and `<data>`, and the `<data>` section contains multiple `<response>` entries. This structure clarifies which instructions go with which data and helps the model process your prompt more accurately.
