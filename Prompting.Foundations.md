@@ -203,3 +203,80 @@ For example:
 </task>
 ```
 In this example, the `<task>` tag contains both `<instructions>` and `<data>`, and the `<data>` section contains multiple `<response>` entries. This structure clarifies which instructions go with which data and helps the model process your prompt more accurately.
+
+
+# Defining Constraints and Requirements for Effective Prompts
+
+When you give an LLM a task, it will try to fulfill your request. However, if your instructions are too broad or vague, the model might produce answers that are off-topic, too lengthy, or not useful. By adding explicit constraints and requirements, you guide the model to deliver precisely the desired output.
+
+In this lesson, you'll learn what `constraints` and `requirements` are, how to write them effectively, and how they can make your prompts much more powerful.
+
+## What Are Constraints and Requirements?
+A `constraint` is a rule or limit you set for the LLM's response. A `requirement` is something the response must include or follow. Both help you control the output.
+
+Let's look at a simple example. Imagine you want to create a survey for your customers. Here's a basic prompt:
+
+```Plain text
+Suggest five questions I can include in a customer survey.
+```
+
+This prompt is clear, but it leaves a lot of room for interpretation. The LLM might suggest questions about anything — pricing, product features, or even personal information.
+
+Now, let's add some `constraints`:
+
+```Plain text
+Suggest five questions I can include in a customer survey.
+- Each question must be open-ended.
+- Do not mention pricing in any question.
+- Keep each question under 20 words.
+```
+
+Adding these constraints tells the LLM exactly what you want and what to avoid. This makes the output more focused and valuable.
+
+## Best Practices for Writing Constraints
+
+- `Organize constraints as a bulleted list`: This makes them easy for both you and the model to read and follow.
+- `Be specific`: Vague constraints are easy to overlook. Spell out exactly what you want or don't want.
+- `Limit the number of constraints`: Too many constraints can overwhelm the model, causing it to ignore some. Focus on the most important ones.
+- `Be strict and explicit`: Use strong language like "must" to emphasize what is required.
+
+Let's see how these tips work in practice.
+
+### Another Example
+Suppose you want the LLM to write a product description but want it to be short and not mention the price. Here's how you might write your prompt:
+
+```Plain text
+Write a product description for a new smartwatch.
+
+- The description must be under 50 words.
+- Do not mention the price.
+- Focus on health and fitness features.
+```
+Explanation:
+
+- The first constraint sets a word limit, ensuring the answer is concise.
+- The second constraint tells the model to avoid discussing price.
+- The third constraint directs the content to focus on a specific topic.
+
+By being clear and direct, you help the LLM give you precisely what you need.
+
+### One More Example
+Let's say you want the LLM to generate a list of creative team-building activities for a remote team, but you have some specific needs. Here's a prompt with well-defined constraints:
+
+```Plain text
+# Context:
+I want to brainstorm ideas for a team-building session.
+
+# Ask
+Suggest four creative team-building activities for a remote team.
+
+# Constraints
+- Each activity must be suitable for video calls.
+- Do not suggest any activities that require physical materials.
+- Keep each activity description under 30 words.
+```
+
+Note:
+
+This prompt also uses formatting to separate context, ask, and constraints.
+
