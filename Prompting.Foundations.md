@@ -280,3 +280,117 @@ Note:
 
 This prompt also uses formatting to separate context, ask, and constraints.
 
+
+
+
+# Introduction: The Power of Examples in Prompting
+Welcome back! In the last lesson, you learned how to use constraints and requirements to make your prompts more effective. Today, I want to show you another powerful tool: **using examples within your prompts**.
+
+When you include a clear example, you give the language model a template to follow. This makes your instructions easier to understand and helps the model produce more consistent and accurate answers. In this lesson, you will see how examples can simplify your prompts and reduce the need for complex constraints.
+
+## What Happens Without Examples?
+
+Let's start by looking at what happens when you give a prompt without examples. Imagine you want to create a set of quiz cards about large language models (LLMs) for your students.
+
+You might write a prompt like this:
+
+```Plain text
+# Context
+
+I want to print 10 cards with choose-one questions about LLMs for my students.
+
+# Ask
+
+Come up with 10 questions with three answer options, where one answer is correct.
+```
+
+If you give this prompt to an LLM, you might get answers that look like this:
+
+```plain text
+1. What does LLM stand for?
+   a) Large Language Model
+   b) Long List Model
+   c) Logical Learning Machine
+   Correct answer: a
+
+2. Who created GPT-3?
+   a) Google
+   b) OpenAI
+   c) Microsoft
+   Correct answer: b
+
+...
+```
+
+At first glance, this looks fine. But if you try this prompt several times, you might notice:
+
+- The format of the questions and answers can change each time.
+- Sometimes, the correct answer is not clearly marked.
+- The numbering or lettering might be inconsistent.
+- The model might include an introduction or extra text you didn't ask for.
+
+This happens because the model is making its best guess about what you want, but you haven't given it enough guidance.
+
+## How Examples Improve LLM Responses
+
+One of the easiest ways to help the model understand your desired format is to provide an example. Let's add a clear example to our prompt:
+
+```Plain text
+# Context
+
+I want to print 10 cards with choose-one questions about LLMs for my students.
+
+# Ask
+
+Come up with 10 questions with three answer options, where one answer is correct.
+
+# Example
+
+1. **Question:** Which mechanism, introduced in 2017 by Google Research, was the foundational principle of LLMs?
+   1. Transformer Architecture with self-attention mechanism
+   2. Reinforcement Learning Principle
+   3. Structure-based Architecture with summarization mechanism
+
+   **Correct Answer:** 1.
+```
+
+By including this example, you are:
+
+- Showing the exact format you want for each question and answer.
+- Making it clear how to mark the correct answer.
+- Setting the tone and style for the rest of the questions.
+- When you give this prompt to the LLM, the output is much more likely to match your expectations. The model will follow your provided structure, making the results more consistent and easier to use.
+
+## Pro Tip
+**Note**: Most modern large language models (LLMs) generate responses using Markdown, a lightweight markup language for formatting text. When you interact with these models through a chat interface, the platform automatically renders the Markdown, so formatting like headings, lists, bold, italics, and code blocks appear as intended.
+
+For example:
+
+- If the model outputs `# Heading`, the chat interface displays it as a large, bold heading.
+
+- Writing `**bold text**` will appear as bold text.
+
+- Lists like:
+
+```Plain text
+- Item 1
+- Item 2
+```
+Will be shown as:
+
+- Item 1
+- Item 2
+
+Because of this, when you provide examples or prompts in Markdown, you are explicitly showing the model the exact formatting you want in its response. This helps ensure the output matches your expectations in structure and appearance.
+
+## Combining Examples with Constraints
+In previous lessons, you learned how to use constraints to control the LLM's output. Sometimes, even with an example, the model might include things you don't want, like repeating your example question or adding an introduction or conclusion. This is where constraints come in.
+
+```Plain text
+Constraints:
+- Do not include any introduction or conclusion
+- Do not repeat the example question
+```
+
+With these constraints, your output will be cleaner and more focused, matching your needs.
+
