@@ -205,7 +205,7 @@ For example:
 In this example, the `<task>` tag contains both `<instructions>` and `<data>`, and the `<data>` section contains multiple `<response>` entries. This structure clarifies which instructions go with which data and helps the model process your prompt more accurately.
 
 
-# Defining Constraints and Requirements for Effective Prompts
+# 3- Defining Constraints and Requirements for Effective Prompts
 
 When you give an LLM a task, it will try to fulfill your request. However, if your instructions are too broad or vague, the model might produce answers that are off-topic, too lengthy, or not useful. By adding explicit constraints and requirements, you guide the model to deliver precisely the desired output.
 
@@ -283,7 +283,7 @@ This prompt also uses formatting to separate context, ask, and constraints.
 
 
 
-# Introduction: The Power of Examples in Prompting
+# 4- Introduction: The Power of Examples in Prompting
 Welcome back! In the last lesson, you learned how to use constraints and requirements to make your prompts more effective. Today, I want to show you another powerful tool: **using examples within your prompts**.
 
 When you include a clear example, you give the language model a template to follow. This makes your instructions easier to understand and helps the model produce more consistent and accurate answers. In this lesson, you will see how examples can simplify your prompts and reduce the need for complex constraints.
