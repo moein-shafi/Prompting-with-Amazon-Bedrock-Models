@@ -232,3 +232,62 @@ By first asking for an explanation, you ensure the model understands the topic, 
 
 
 
+
+
+
+# 4- Introduction to Fetching Context with LLMs
+In this lesson, we will explore how Large Language Models (LLMs) can fetch context from various sources to enhance their responses. Context is crucial in interactions with LLMs as it allows the model to provide more accurate and relevant answers. Providing context manually might be a time-consuming process. By understanding how to provide context effectively, you can improve the quality of the responses you receive from LLMs and work with them more efficiently.
+
+## Contextual Summarization with LLMs
+Let's examine how LLMs can summarize material to provide a concise overview. This is particularly useful when you want the LLM to make better judgments in subsequent requests.
+
+Imagine you have a piece of material that you want the LLM to summarize. You can start by providing the material and asking for a summary:
+
+```Plain text
+Please summarize the following material:
+
+<your material>
+```
+
+The LLM will then generate a summary based on the provided material. This helps the LLM understand the key points, which can be helpful for future interactions. You can follow up the summarization with the following:
+
+- Ask the LLM to improve the material based on some feedback,
+- Ask the LLM to generate a summary handout,
+- Ask the LLM to come up with practice questions or exercises.
+
+## Extracting Context from Uploaded Files
+Next, let's explore how LLMs can fetch context from uploaded files, such as PDFs. This is useful when you have documents that you want the LLM to interpret or explain.
+
+Imagine you have a PDF with an assignment, and you want the LLM to explain its format. You can upload the PDF and ask the LLM to provide an explanation:
+
+1. Start with attaching the file.
+1. Then, you can write a prompt:
+
+```
+Exaplin the structure of the assignment from the attached file.
+```
+
+
+The LLM will analyze the PDF and provide an explanation of its format, such as the structure of the questions or the layout of the document.
+
+## Understanding LLM Limitations in Contextual Understanding
+While LLMs are powerful tools for fetching context, they do have limitations, especially when dealing with complex files. Let's consider an example where you provide a PDF with a music score and ask the LLM to explain it.
+
+The attached PDF contains the sheet music for a piano piece. Interpreting music scores can be complex, and language models may sometimes misinterpret details. For instance, a model might confuse the bar number with the time signature, incorrectly stating that a piece written in 4/4 time was actually in 6/8.
+
+<u>In general, exercise caution when working with non-text content</u> such as music notation, images, slides, etc., and always double-check that the model has understood and interpreted the information correctly.
+
+## Efficiency Through Context Fetching with LLMs
+You can leverage LLMs to fetch context directly from materials, enhancing efficiency by reducing the need for manual explanations. Here are some examples:
+
+- `Image Analysis`: Instead of describing the content of an image to the LLM, you can upload the image directly. The LLM can then analyze and understand the image content, providing descriptions or insights much faster than manual input.
+
+- `Document Interpretation`: When dealing with complex documents, such as research papers or historical texts, you can upload the files directly to the LLM. This allows the LLM to extract and understand the context without requiring a detailed manual explanation of the document's content.
+
+- `Data Set Analysis`: For subjects involving data analysis, you can upload data sets directly to the LLM. This enables the LLM to understand the data context and provide insights or visualizations without needing a detailed description of the data structure.
+
+- `Content Summarization`: Instead of explaining the key points of a long article or report, you can input the text into the LLM. The LLM can then summarize the content, providing a quick overview that can be used for planning, sharing, or further analysis.
+
+These examples demonstrate how submitting materials directly to LLMs allows them to fetch context more efficiently, reducing the need for manual explanations and speeding up your workflow.
+
+
