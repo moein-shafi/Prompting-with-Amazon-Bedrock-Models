@@ -291,3 +291,75 @@ You can leverage LLMs to fetch context directly from materials, enhancing effici
 These examples demonstrate how submitting materials directly to LLMs allows them to fetch context more efficiently, reducing the need for manual explanations and speeding up your workflow.
 
 
+
+
+# 5- Introduction: Why Multi-Step Prompting?
+In this part, we will focus on a specific multi-step prompting approach called the `generated knowledge method`.
+
+Sometimes, a single prompt is not enough to get the best answer from a language model. This is especially true when the question is complex or when the model needs more background information to answer well. The generated knowledge method helps by first asking the model to create some extra context or background knowledge and then using that information to answer your main question.
+
+This approach is practical when:
+
+- The task is complex and needs more than one step to solve.
+- The model might not have all the details it needs in the first prompt.
+- You want to guide the model in thinking more deeply before answering.
+
+Let’s explore how this method works and how you can use it in your prompts.
+
+## What Is The Generated Knowledge Method?
+The generated knowledge method is a way to help language models perform better by splitting your request into two steps:
+
+1. **First, ask the model to generate some helpful background information or context**.
+2. **Then, make your main request.**
+
+For example, if you want the model to write a Python script that interacts with a specific API, you might first ask it to explain how to make a general API call to that service. Once you have that information, you can then ask it to write the script you need.
+
+This two-step approach helps the model build the knowledge it needs, leading to more accurate and useful answers.
+
+## How To Apply The Generated Knowledge Method
+Let’s walk through how to use this method step by step.
+
+Suppose you want to write a Python script that sends a prompt from a text file to an Amazon Bedrock model. If you ask for the script immediately, the model might miss important details or make mistakes.
+
+Instead, start by asking a general question to help the model generate the background knowledge:
+
+```Plain text
+In general, how does one make a proper API call to Amazon Bedrock models with Python?
+```
+
+This prompt asks the model to explain the basic process. The model might respond with an overview like:
+
+- You need to use the AWS SDK for Python (boto3).
+- You must authenticate with AWS credentials.
+- You call the Bedrock API with the right parameters.
+
+
+## Why do this?
+By starting with a general question, you help the model “think out loud” and lay out the steps or requirements. This makes it less likely to skip important details in the next step.
+
+
+
+## Make Your Specific Request
+Now that the model has explained the general process, you can ask for the specific script you need:
+
+```Plain text
+Good. Now, craft a Python script that will receive a prompt from a text file and send it to a specified model.
+```
+
+The model can now write a more accurate and complete script using the generated context. For example, it will remember to include authentication, file reading, and the correct API call.
+
+### Another Example: Non-Technical Task
+This method is not just for coding. Imagine you want the model to analyze a news article. Instead of asking for an analysis right away, you can first ask for a summary:
+
+```Plain text
+Summarize the main points of this article.
+```
+
+Then, once you have the summary, you can ask:
+
+```Plain text
+Based on the summary above, what are the possible impacts of these events?
+```
+
+This helps the model focus on the right information and provide a more thoughtful analysis.
+
