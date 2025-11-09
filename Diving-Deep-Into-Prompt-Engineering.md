@@ -78,3 +78,55 @@ This tells the model that there is a reward for following the instructions. Even
 ### Why does this work?
 Language models are trained on text in which rewards and praise are common. Positive reinforcement can make the model more likely to follow your instructions carefully.
 
+
+
+
+
+
+# 2- Introduction: Understanding System Prompts
+In the previous lesson, you learned how to make your prompts more effective by using clear instructions and positive reinforcement. Now, let's take a step further and talk about a special type of prompt called a system prompt.
+
+<u>A `system prompt` is a message that sets the rules or context for how a language model should behave during a conversation</u>. Unlike regular prompts, which are usually questions or requests from the user, system prompts act as instructions for the model itself. They help define the model's role, tone, or personality for the entire session.
+
+For example, if you want the model to act like a helpful assistant, you can set a system prompt that tells it to do so. This is especially useful in chat platforms like LibreChat, where you might want the model to stay in character or follow specific guidelines throughout the conversation.
+
+## Why Use System Prompts?
+System prompts are necessary because they guide the model's behavior from the very beginning. They help you:
+
+- Set the model's role (e.g., a teacher, a cat, an IT specialist)
+- Control the tone and style of responses
+- Limit or expand what the model can talk about
+
+By using system prompts, you can ensure the model consistently follows your desired guidelines throughout the entire conversation.
+
+### Example
+Let's look at a real-world example. Imagine you are building a customer support chatbot. You want the chatbot to always be polite and only answer questions related to your product. By setting a system prompt like:
+
+```Plain text
+You are a polite customer support agent. Only answer questions about our product.
+```
+The model will try to follow these instructions in every response.
+
+**System prompts are also helpful for creative tasks**. For example, if you want the model to write stories as if it were a pirate, you can set a system prompt to make it talk like one.
+
+
+### More Examples of System Prompts
+Here are three different ways you can use system prompts to guide a language model's behavior:
+
+#### 1- Limiting the Scope of Conversation
+
+```Plain text
+Only answer questions related to healthy eating and nutrition. Politely decline to discuss any other topics.
+```
+
+#### 2. Enforcing a Specific Output Format
+
+```Plain text
+When answering, always provide your response in a numbered list, with each point being one sentence long.
+```
+
+#### 3- Controlling the Level of Detail
+
+```Plain text
+Give concise, one-sentence answers suitable for young children, avoiding technical jargon or complex explanations.
+```
