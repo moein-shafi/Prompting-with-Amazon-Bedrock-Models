@@ -106,3 +106,111 @@ Please parse this data and provide the following:
 ```
 
 This prompt clearly defines the data sample, instructions, and constraints, making it easy for the LLM to understand and respond accurately.
+
+
+
+
+# 2- Introduction: Debugging with LLMs
+In the previous lesson, you learned how to create prompts that help LLMs parse and analyze structured data. Now, let’s focus on a different but equally important skill: debugging code with the help of LLMs.
+
+When your code doesn’t work as expected, it can be frustrating. LLMs can be a powerful tool to help you find and fix bugs, but only if you communicate the problem clearly. In this lesson, I will show you how to share the right information and set clear expectations so the LLM can give you the most helpful answer.
+
+## Recognizing When Code Isn’t Working
+Before you can ask for help, you need to know when your code is not working. Usually, you will notice one of two things:
+
+- Your code gives an error message and stops running.
+- Your code runs, but the result is not what you expected.
+
+The most common way to spot a problem is through an error message called a traceback. A traceback is a report that shows where the error happened in your code and what kind of error it was.
+
+For example, if you run this code:
+
+```Python
+numbers = [10, 20, 30, 40, 50]
+total = 0
+count = 0
+for i in numbers:
+    total += i
+print(total / count)
+```
+
+You might see this error message:
+
+```Plain text
+Traceback (most recent call last):
+  File "test.py", line 6, in <module>
+    print(total / count)
+          ~~~~~~^~~~~~~
+ZeroDivisionError: division by zero
+```
+
+This traceback tells you that the code tried to divide by zero, which is not allowed in Python. The error happened on the line print(total / count).
+
+## What to Share with the LLM
+When you ask an LLM for help with debugging, it is important to include both your code and the relevant part of the traceback. If you only share the code, the LLM might not know what went wrong. If you only share the error message, the LLM won’t know what your code looks like.
+
+Let’s take a step-by-step look at a good debugging prompt.
+
+```Plain text
+I have a Python script that processes a list of numbers and calculates their average. 
+However, the script is throwing an error, and I'm unable to identify the issue. 
+
+Here is the original code:
+`script.py`
+numbers = [10, 20, 30, 40, 50]
+total = 0
+count = 0
+for i in numbers:
+    total += i
+print(total / count)
+
+Here is the traceback:
+
+Traceback (most recent call last):
+  File "test.py", line 6, in <module>
+    print(total / count)
+          ~~~~~~^~~~~~~
+ZeroDivisionError: division by zero
+```
+
+Here, you give the LLM all the information it needs to understand the problem and help you fix it.
+
+## Stating Your Constraints Clearly
+LLMs tend to provide more changes than required, especially the Claude models. It is likely to include a lot of excess comments and error-handling code, which may be unnecessary.
+
+To keep your code simple, you might want to add the following constraints:
+
+```Plain text
+Provide me with an updated code and a short explanation.
+
+# Constraints
+
+- Don't include any error handling in the code
+- Exclude comments in the code
+```
+
+By stating your constraints, you help the LLM focus on precisely what you want: a fixed version of your code without extra error handling or comments.
+
+## Sharing the Relevant Part of a Long Traceback
+Sometimes, your traceback can be very long, especially if your code uses external libraries or frameworks. In these cases, copying the entire traceback into your prompt is not always helpful. Instead, focus on sharing the most relevant part:
+
+Include the last few lines of the traceback, especially the part that shows the error type and the exact line in your code where the error happened.
+If the traceback includes many lines from library code, you can skip those and only include the lines that reference your own files or functions.
+For example, if you see a long traceback like this:
+
+```Plain text
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/threading.py", line 973, in _bootstrap
+    self._bootstrap_inner()
+  File "/usr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/home/user/my_script.py", line 12, in run
+    result = process_data(data)
+  File "/home/user/my_script.py", line 8, in process_data
+    return sum(data) / len(data)
+ZeroDivisionError: division by zero
+```
+
+You can share just the relevant part:
+
+This helps the LLM focus on the part of the traceback that is most useful for debugging your code.
