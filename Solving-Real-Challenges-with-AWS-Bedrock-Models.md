@@ -178,3 +178,106 @@ This shows the model, including the structure, indentation, and spacing you expe
 Providing an example is always a good idea—it helps the LLM understand precisely what you want, including the structure, indentation, and any subtle formatting details. However, if you don’t know the details of the format or don’t have time to craft an example, you can often rely on the LLM to fill in the gaps.
 
 LLMs are pretty good at generating correct syntax and structure just from clear instructions for popular formats like JSON, YAML, HTML, XML, etc. In many cases, simply specifying the desired format in your prompt is enough to get a well-formed output. If you notice minor issues or want more control, you can always add an example or more constraints later.
+
+
+
+
+
+
+
+# 3- Introduction: Getting Usable Code from LLMs
+
+In this lesson, you will learn how to prompt language models to give you clean, runnable code — nothing extra. This is especially useful if you are not a programmer but want to quickly generate scripts, queries, or small code snippets for your work or personal projects.
+
+Modern language models are very good at creating simple scripts and code snippets. Even if you do not have a technical background, you can use these models to try out your ideas, draft solutions, or experiment for fun. This approach is sometimes called vibe coding. While vibe coding cannot replace professional programmers, it is an excellent way for non-technical people to get started, test ideas, or create temporary solutions.
+
+For example, you might use an LLM to:
+
+- Generate a quick SQL query to filter data from a table.
+- Write a small Python script to process a CSV file.
+- Create a Bash command to rename files in a folder.
+
+However, it is essential to remember that LLMs are unsuitable for building complete applications or production-ready systems. They are best used for generating drafts, simple scripts, or one-off solutions.
+
+## Prompting for Clean, Runnable Code
+
+Now, let’s focus on how to get the LLM to give you only the code you need without any extra explanations or comments. This is important because extra text can make it harder to copy and use the code directly.
+
+LLMs often include explanations, comments, or even partial code by default. For example, if you ask:
+
+```Plain text
+Write an SQL query to get all workers in the Engineering department with a salary over $50,000.
+```
+You might get something like:
+
+```Plain text
+Here is the SQL query you requested:
+
+SELECT * FROM workers WHERE Department = 'Engineering' AND Salary > 50000;
+
+Here is how it works:
+...
+```
+
+This includes just one line you need – and a lot of extra information.
+
+## Prompting for ONLY Clean, Runnable Code
+To get only the code, you need to be specific in your prompt. You can add a simple constraint:
+
+```Plain text
+Please provide me with ONLY the query itself. DO NOT include any introduction or explanation.
+```
+
+Here is a complete, prompt example:
+
+```Plain text
+I have an SQL table workers.
+
+<structure>
+ID(Primary Key),Name(VARCHAR),Department(VARCHAR),Position(VARCHAR),Salary(INT);
+</structure>
+
+<request>
+Provide me with an SQL query to get all records from this table where the salary is greater than $50000 and the Department is "Engineering." Sort by Name Alphabetically
+</request>
+
+<instructions>
+Please provide me with ONLY the query itself. DO NOT include any introduction or explanation.
+</instructions>
+```
+
+This prompt is clear and direct. It tells the model exactly what you want and do not want.
+
+## Pro tip: Avoiding Overly Complicated Answers
+Modern LLMs, including Claude, often generate answers that are more complex than necessary—especially for coding tasks. For example, you might ask for a simple script, but the model could respond with a full application, multiple alternative versions, or extra features you didn’t request.
+
+To avoid this, add a clear constraint to your prompt, such as:
+
+```Plain text
+I need a simple, runnable script. Make it short and do not introduce any extra features or alternative versions.
+```
+
+This helps ensure the model gives you exactly what you need—no more, no less.
+
+## When to Use Generated Code
+Explore these 5 ideas of how a non-technical person can use code generation:
+
+1. **Automate Repetitive Spreadsheet Tasks**
+
+    Generate small Python or VBA scripts to clean up, reformat, or analyze Excel or Google Sheets data—such as removing duplicates, splitting columns, or summarizing information.
+
+1. **Batch Rename or Organize Files**
+    
+    Use Bash or PowerShell commands to quickly rename, move, or organize large numbers of files in folders (e.g., renaming photos by date or sorting documents into subfolders).
+
+1. **Create Custom Data Filters**
+
+    Write SQL queries to extract specific information from databases or CSV files, such as filtering customer lists, generating sales reports, or finding overdue tasks.
+
+1. **Automate Email or Message Templates**
+
+    Generate scripts to send personalized emails or messages in bulk, automatically using data from spreadsheets to fill in names, dates, or other details.
+
+1. **Convert or Reformat Data**
+
+    Use code snippets to convert files between formats (e.g., CSV to JSON), reformat text, or extract specific information from documents—saving time on manual copy-pasting and editing.
