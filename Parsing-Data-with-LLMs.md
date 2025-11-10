@@ -214,3 +214,90 @@ ZeroDivisionError: division by zero
 You can share just the relevant part:
 
 This helps the LLM focus on the part of the traceback that is most useful for debugging your code.
+
+
+# 3- Introduction: Keeping Code Working Over Time
+Imagine you have a piece of code that does a specific job for you — maybe it parses some data, generates a report, or automates a task. Over time, you will likely need to update this code. New requirements might come up, bugs may appear, or you might want to improve how the code works. This is a regular part of software development, and it’s called code maintenance.
+
+Large Language Models (LLMs) can help you maintain and develop your code more efficiently. In this lesson, I will show you three practical strategies for using LLMs to update and improve existing code. Each strategy has its strengths and limitations, and I will walk you through how to use them with clear examples.
+
+# Strategy 1: Full Code Replacement
+The first and most direct strategy is to provide the LLM with your entire code and ask it to return a fully updated version. This simple approach works well for small scripts or for making straightforward changes.
+
+Let’s look at an example. Imagine you have a code that parses your data, and you want to update the generated report data. Here is a prompt:
+
+```Plain text
+I have the following code that parses data from CSV and converts it into a report:
+
+<code omitted for brevity>
+
+# Instructions:
+- Improve this code to make the report better structured as a list of bullet points
+- Provide me with FULL updated code
+```
+
+**Explanation:**
+
+- You start by pasting your code so the LLM has all the context.
+- You clearly state what you want: a better-structured report, specifically as a list of bullet points.
+- You ask for the full updated code, not just a snippet.
+
+This method is fast and can work well for small to medium-sized scripts. However, the LLM’s consistency and accuracy can drop as your code gets larger. Remember, LLMs are limited to how much code they can process at once, and they might miss details or introduce new issues in bigger files.
+
+## Strategy 2: Building Context with the LLM
+When your code is too large or complex for the LLM to handle all at once, you can use the generated knowledge approach to help the LLM build context before making changes.
+
+### Step 1: Ask the LLM to explain your code.
+
+```Plain text
+I have the following code that parses data from CSV and converts it into a report:
+
+<code omitted for brevity>
+
+Explain this code in detail.
+```
+
+**Explanation:**
+
+- By asking the LLM to explain your code, you help it “understand” what the code does.
+- The LLM will summarize the logic, which can also help you spot any issues or areas for improvement.
+
+### Step 2: Now, ask for the changes you want.
+
+```Plain text
+Good. Now:
+- Improve this code to make the report better structured, as a list of bullet points
+- Provide me with FULL updated code
+```
+
+**Explanation:**
+
+- After the LLM has explained the code, it has a better context for making changes.
+- This two-step process can lead to more accurate and relevant updates, especially for larger codebases.
+
+However, even with this approach, you can still hit the LLM’s context window limit if your application is very large. In those cases, you may need to break your code into smaller parts or use the following strategy.
+
+## Strategy 3: Guided Code Updates
+If your codebase is too large to update all at once, you can ask the LLM to guide you through the step-by-step update process.
+
+Here’s how you can do it:
+
+```Plain text
+I have the following code that parses data from CSV and converts it into a report:
+
+<code omitted for brevity>
+
+# Instructions:
+- Explain steps I need to take to improve this code to make the report better structured, as a list of bullet points
+- Include code snippets for each step
+- Explain each step in detail
+```
+
+**Explanation:**
+
+- Instead of asking for the full updated code, you ask the LLM to break down the process into steps.
+- The LLM will list the changes you need to make, provide code snippets for each step, and explain why each change is required.
+
+- This approach is especially useful for large projects or when you want to understand the reasoning behind each change.
+
+- It also helps you learn and build your own coding skills since you’ll be making the changes yourself with the LLM’s guidance.
