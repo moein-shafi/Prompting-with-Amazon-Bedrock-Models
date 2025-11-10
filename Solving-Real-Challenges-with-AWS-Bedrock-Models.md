@@ -281,3 +281,113 @@ Explore these 5 ideas of how a non-technical person can use code generation:
 1. **Convert or Reformat Data**
 
     Use code snippets to convert files between formats (e.g., CSV to JSON), reformat text, or extract specific information from documents—saving time on manual copy-pasting and editing.
+
+
+
+
+
+
+# 4- Introduction: LLMs and Everyday Programming
+In this lesson, you will learn how to use large language models (LLMs) and Python to solve everyday work tasks, even if you do not have a technical background. Many people face repetitive or time-consuming tasks at work, such as transforming data, extracting information, or summarizing results. LLMs can help you write simple scripts to automate these tasks, making your work more efficient.
+
+
+## Why Python For Everyday Automation?
+`Python` is one of the most popular programming languages for automating tasks. There are a few reasons for this:
+
+- **Readability**: Python code is easy to read and understand, even for beginners.
+- **Versatility**: Python can handle many types of data, such as text, tables, and files.
+- **Community Support**: There are many libraries and resources available for almost any task you can imagine.
+
+For example, if you need to process a spreadsheet, extract information from a document, or convert data from one format to another, Python is a great choice. LLMs can help you write the code you need, even if you are not a programmer.
+
+
+
+## Example: Parsing an HTML Table to JSON
+Let’s walk through a practical example step by step. Imagine you have an HTML page with a table listing Beethoven’s most important pieces. You want to turn this table into a JSON file so you can use the data elsewhere.
+
+When working with LLMs, describing your task in detail is important. Here is an example of a prompt:
+
+```Plain text
+__CONTEXT__
+
+Here is an HTML page with a table of Beethoven's most important pieces
+
+[Paste your HTML here]
+
+__ASK__
+
+Write a Python script that parses the table from the HTML and saves the data as a JSON array in a file called `pieces.json`. The JSON should have one object per piece, with keys for each column in the table.
+```
+
+By specifying the language (Python), the input (HTML table), and the output (JSON file), you help the LLM generate exactly the code you need.
+
+
+
+## More Real-World Examples for Non-Technical Users
+Let’s look at two more examples of using Python and LLMs to automate everyday tasks.
+
+Suppose you have a text file with a list of contacts, and you want to extract all the email addresses. You can ask the LLM:
+
+```Plain text
+__CONTEXT__
+
+I have a text file called `contacts.txt` that contains names and email addresses mixed with other text. Here is a snippet of data:
+
+Emily Carter - emily.carter@email.com
+Met at the networking event in March.
+Michael Thompson <m.thompson@businessmail.org>
+Olivia Reed (olivia.reed@company.net)
+Daniel Kim, daniel.kim@consultants.io
+
+__ASK__
+
+Write a Python script that reads `contacts.txt` and extracts all email addresses, saving them to a file called `emails.txt`, one per line.
+```
+
+**Explanation**:
+This prompt tells the LLM to focus on extracting and saving email addresses in a simple format. The generated script will likely use a complex programming technique called "regular expressions" to find emails and write them to a new file. This complex task requires a lot of knowledge, but it is also a standard task, so LLMs handle it very well.
+
+
+
+## Example 2: Summarizing Survey Results from a CSV File
+Imagine you have a CSV file with survey responses and want to count how many people answered "Yes" or "No" to a question. You can prompt the LLM like this:
+
+```Plain text
+__CONTEXT__
+
+I have a CSV file called `survey.csv` with a column named `Response` that contains answers "Yes" or "No."
+
+__ASK__
+
+Write a Python script that reads `survey.csv` and prints the number of "Yes" and "No" responses.
+```
+
+**Explanation**:
+This prompt asks for a script that reads the CSV, counts the responses, and prints the results. The LLM will generate code that uses Python’s csv module to process the file and count the answers.
+
+These examples show how you can use LLMs to quickly generate scripts for everyday tasks, even if you are not a programmer.
+
+
+
+## Environment Issues
+While LLMs can help you generate runnable Python code, you still need a correctly set up environment to actually run the scripts. This means having Python installed on your computer and any additional tools or libraries the code might require. If you are unsure how to set up your environment, you can ask the LLM for step-by-step instructions or look for beginner guides online.
+
+Python uses libraries (also called modules or packages) to add extra features, such as reading Excel files or working with web data. If you try to run a script and see an error like `ModuleNotFoundError`: No module named 'some_library', it means the code is using a library that is not installed on your system.
+
+You have two main options:
+
+- **Ask the LLM to avoid using this module**: You can prompt the LLM to rewrite the code without using the missing library or to use only standard Python modules.
+- **Install the module**: You can install the required library using the terminal command pip install `<modulename>`. If you are unsure how to do this, you can ask the LLM for detailed instructions.
+
+This way, you can resolve most environmental issues and run your scripts smoothly.
+
+## Limitations and When to Be Careful
+While LLMs and Python can help automate many everyday tasks, there are significant limitations to keep in mind—especially if you are not a technical user:
+
+- **Security Risks**: LLMs may generate code that is not secure. For example, scripts that download files from the internet or process sensitive data could expose you to security threats if you do not fully understand what the code is doing.
+- **Data Privacy**: If your data contains confidential or personal information, be careful not to share it with online LLM tools, as your data might be stored or used to train future models.
+- **Code Quality**: LLM-generated code may work for simple tasks, but it can have bugs or edge cases that are not appropriately handled. Always test the code with your data before using it in important workflows.
+- **Complex Tasks**: For complex automation, such as integrating with company systems, handling large datasets, or building user interfaces, LLMs may not generate reliable or maintainable code. In these cases, it is better to consult with a professional developer.
+- **Maintenance**: If something goes wrong or you need to update the script later, you may need technical knowledge to troubleshoot or modify the code.
+
+In summary: Use LLMs for simple, well-defined tasks where mistakes are not costly. Avoid using LLM-generated code for critical, sensitive, or complex workflows unless you have technical support. Always review and test any code before using it in your work.
